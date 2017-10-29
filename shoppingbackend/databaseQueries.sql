@@ -1,6 +1,7 @@
+use onlineshopping;
 CREATE TABLE category(
 	
-	id IDENTITY,
+	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(50),
 	description VARCHAR(255),
 	image_url VARCHAR(50),
