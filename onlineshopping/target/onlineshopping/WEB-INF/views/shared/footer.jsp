@@ -1,6 +1,6 @@
-<footer class="container footer">
+<footer class="footer">
 	<div class="container">
-		<p class="m-0 text-center text-white">Copyright &copy; Your
+		<p class="m-0 text-center">Copyright &copy; Your
 			Website 2017</p>
 	</div>
 	<!-- /.container -->
