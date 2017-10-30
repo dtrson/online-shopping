@@ -10,7 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sonduong.shoppingbackend.dao.CategoryDAO;
 import com.sonduong.shoppingbackend.dto.Category;
+import com.sonduong.shoppingbackend.dto.Product;
 
+/**
+ * @author Son Duong
+ * 
+ * 29.10.2017
+ */
 @Repository("categoryDAO")
 @Transactional
 public class CategoryDAOImpl implements CategoryDAO {
@@ -25,12 +31,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		/**	create HQL Hibernate Query Language where Category is Entity's Name, not Table's Name, 
 			but default is Category's Name = Table'Name**/
-		String selectActiveCategory = "FROM Category WHERE active = :active";
-		
-		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
-		query.setParameter("active", true);
-		
-		return query.getResultList();
+		return sessionFactory.getCurrentSession().createQuery("FROM Category",Category.class).getResultList();
 	}
 
 	//getting single category based on id
@@ -60,7 +61,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public boolean update(Category category) {
 		
 		try {
-			//add the category to database
+			//update the category to database
 			sessionFactory.getCurrentSession().update(category);
 			return true;
 			
@@ -73,10 +74,10 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	public boolean delete(Category category) {
 		
-		category.setActive(false);
+		
 		
 		try {
-			//add the category to database
+			category.setActive(false);
 			sessionFactory.getCurrentSession().update(category);
 			return true;
 			
@@ -84,6 +85,18 @@ public class CategoryDAOImpl implements CategoryDAO {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override
+	public List<Category> listActiveCategories() {
+		
+		String selectActiveCategories = "FROM Category WHERE active = :active";
+		
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(selectActiveCategories, Category.class)
+				.setParameter("active", true)
+				.getResultList();
 	}
 
 }

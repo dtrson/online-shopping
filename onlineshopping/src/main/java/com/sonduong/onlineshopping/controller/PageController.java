@@ -26,7 +26,7 @@ public class PageController {
 	public ModelAndView index(){
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Home");
-		mv.addObject("categories",categoryDAO.list());
+		mv.addObject("categories",categoryDAO.listActiveCategories());
 		mv.addObject("userClickHome", true);
 		return mv;
 	}
@@ -55,7 +55,7 @@ public class PageController {
 		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","All Products");
-		mv.addObject("categories",categoryDAO.list());
+		mv.addObject("categories",categoryDAO.listActiveCategories());
 		mv.addObject("userClickAllProducts", true);
 		return mv;
 	}
@@ -71,7 +71,7 @@ public class PageController {
 		category = categoryDAO.get(id);
 		
 		mv.addObject("title",category.getName());
-		mv.addObject("categories",categoryDAO.list());
+		mv.addObject("categories",categoryDAO.listActiveCategories());
 		mv.addObject("category",category);
 		mv.addObject("userClickCategoryProducts", true);
 		return mv;
