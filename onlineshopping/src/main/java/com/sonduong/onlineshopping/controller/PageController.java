@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sonduong.onlineshopping.exception.ProductNotFoundException;
 import com.sonduong.shoppingbackend.dao.CategoryDAO;
 import com.sonduong.shoppingbackend.dao.ProductDAO;
 import com.sonduong.shoppingbackend.dto.Category;
@@ -90,10 +91,12 @@ public class PageController {
 	
 	/**Viewing single product**/
 	@RequestMapping(value="/show/{id}/product")
-	public ModelAndView showSingleProduct(@PathVariable int id){
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException{
 		
 		ModelAndView mv = new ModelAndView("page");
 		Product product = productDAO.get(id);
+		
+		if(product == null) throw new ProductNotFoundException();
 		
 		//update view count
 		product.setViews(product.getViews()+1);

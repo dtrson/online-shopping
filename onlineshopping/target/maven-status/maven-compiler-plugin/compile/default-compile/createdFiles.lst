@@ -1,2 +1,4 @@
 com\sonduong\onlineshopping\controller\JsonDataController.class
+com\sonduong\onlineshopping\exception\GlobalDefaultExceptionHandler.class
+com\sonduong\onlineshopping\exception\ProductNotFoundException.class
 com\sonduong\onlineshopping\controller\PageController.class
