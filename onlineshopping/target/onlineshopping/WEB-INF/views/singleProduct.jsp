@@ -2,10 +2,10 @@
 	<!-- Breadcrumd -->
 	<div class="row">
 		<div class="col-xs-12">
-			<ol class="breadcrumd">
-				<li><a href="${contextRoot}/home">Home</a></li>
-				<li><a href="${contextRoot}/show/all/products">Products</a></li>
-				<li class="active">${product.name}</li>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="${contextRoot}/home">Home</a></li>
+				<li class="breadcrumb-item active"><a href="${contextRoot}/show/all/products">Products</a></li>
+				<li class="breadcrumb-item active">${product.name}</li>
 			</ol>
 		</div>
 	</div>

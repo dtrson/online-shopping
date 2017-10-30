@@ -1,10 +1,12 @@
 package com.sonduong.onlineshopping.controller;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sonduong.shoppingbackend.dao.CategoryDAO;
@@ -21,6 +23,8 @@ import com.sonduong.shoppingbackend.dto.Product;
 @Controller
 public class PageController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
+	
 	@Autowired
 	private CategoryDAO categoryDAO;
 	
@@ -30,6 +34,8 @@ public class PageController {
 	@RequestMapping(value= {"/", "/index","/home"})
 	public ModelAndView index(){
 		ModelAndView mv = new ModelAndView("page");
+		logger.info("Inside PageController index method - INFO");
+		logger.debug("Inside PageController index method - DEBUG");
 		mv.addObject("title","Home");
 		mv.addObject("categories",categoryDAO.listActiveCategories());
 		mv.addObject("userClickHome", true);
