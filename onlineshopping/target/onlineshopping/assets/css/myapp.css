@@ -36,3 +36,9 @@ body {
 	padding-bottom:10px;
 	width:100%;
 }
+
+/*images inside dataTables*/
+.dataTableImg {
+	width:50px;
+	height:50px;	
+}

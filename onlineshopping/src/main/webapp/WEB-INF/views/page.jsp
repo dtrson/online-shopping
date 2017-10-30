@@ -24,13 +24,20 @@
 
 <script type="text/javascript">
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
 </script>
 
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
+<!-- Font awesome CSS -->
+<link href="${css}/font-awesome.css" rel="stylesheet">
+
 <!-- Bootstrap Solar Theme -->
 <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+
+<!-- Bootstrap DataTable CSS -->
+<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -67,17 +74,29 @@
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 			
+			<!--  Load only when user clicks single product -->
+			<c:if test="${userClickShowProduct == true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
 			
 		</div>
 
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
 
-		<!-- Bootstrap core JavaScript -->
+		<!-- JQuery -->
 		<script src="${js}/jquery.js"></script>
+		
+		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/popper.min.js"></script>
 		<script src="${js}/bootstrap.min.js"></script>
-
+		
+		
+		<!-- Datatable plugin -->
+		<script src="${js}/jquery.dataTables.js"></script>
+		<script src="${js}/dataTables.bootstrap4.js"></script>
+		
 		<!-- Self coded javascript -->
 		<script src="${js}/myapp.js"></script>
 	</div>
