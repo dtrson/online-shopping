@@ -175,7 +175,7 @@ $(function(){
 					mRender: function(data,type,row){
 						
 						var str = '';
-						str+= '<a href="${contextRoot}/manage/'+ data +'/product" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>'
+						str+= '<a href="'+ window.contextRoot +'/manage/'+ data +'/product" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>'
 						return str;
 					}
 				}

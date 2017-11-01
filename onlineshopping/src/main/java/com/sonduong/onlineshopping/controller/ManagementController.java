@@ -70,8 +70,18 @@ public class ManagementController {
 	@RequestMapping(value="/products", method=RequestMethod.POST)
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model, HttpServletRequest request){
 		
-		//call product validator
-		new ProductValidator().validate(mProduct, results);
+		//custom product validator
+		//case add new product
+		if(mProduct.getId()==0){
+			new ProductValidator().validate(mProduct, results);
+		}
+		//case update product
+		else{
+			if(!mProduct.getFile().getOriginalFilename().equals("")){
+				new ProductValidator().validate(mProduct, results);
+			}
+		}
+		
 		
 		//check if there are any errors
 		if(results.hasErrors()){
@@ -84,8 +94,15 @@ public class ManagementController {
 		
 		logger.info(mProduct.toString());
 		
-		//create new product record
-		productDAO.add(mProduct);
+		//check if the request is add or edit/update
+		if(mProduct.getId()==0){
+			//create new product record
+			productDAO.add(mProduct);
+		}else{
+			//update the product
+			productDAO.update(mProduct);
+		}
+		
 		
 		if(!mProduct.getFile().getOriginalFilename().equals("")){
 			FileUploadUtility.uploadFile(request,mProduct.getFile(),mProduct.getCode());
@@ -108,6 +125,22 @@ public class ManagementController {
 		productDAO.update(product);
 		
 		return (isActive) ? "You have successfully deactivated the product with id " + product.getId() : "You have successfully activated the product with id " + product.getId();
+	}
+	
+	@RequestMapping(value="/{id}/product", method=RequestMethod.GET)
+	public ModelAndView showEditProducts(@PathVariable int id){
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("userClickManageProducts",true);
+		mv.addObject("title","Manage Products");
+		
+		//fetch product from database
+		Product nProduct = productDAO.get(id);
+		
+		mv.addObject("product",nProduct);
+		
+		return mv;
+		
 	}
 	
 	//returning categories for the request mapping 
