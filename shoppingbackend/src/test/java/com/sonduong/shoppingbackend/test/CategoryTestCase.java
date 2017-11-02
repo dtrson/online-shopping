@@ -10,6 +10,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.sonduong.shoppingbackend.dao.CategoryDAO;
 import com.sonduong.shoppingbackend.dto.Category;
 
+/**
+ * @author Son Duong
+ * 
+ * 30.10.2017
+ */
 public class CategoryTestCase {
 	
 	private static AnnotationConfigApplicationContext context;
