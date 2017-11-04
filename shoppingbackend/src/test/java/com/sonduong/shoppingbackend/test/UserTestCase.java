@@ -204,6 +204,7 @@ public class UserTestCase {
 		assertEquals("Failed to add shipping address", true, userDAO.addAddress(address));
 	}
 	
+	@Ignore
 	@Test
 	public void testGetAddresses(){
 		user = userDAO.getByEmail("ob@gmail.com");
