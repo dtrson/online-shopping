@@ -109,6 +109,18 @@ public class PageController {
 		
 	}
 	
+	/*having similar mapping to flow id, 
+	but because the order of webflow (in dispatcher-servlet) is set to -1: has priority 
+	-> the flow will be triggered and this request mapping is not called*/
+	@RequestMapping(value= "/register")
+	public ModelAndView register(){
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","About Us");
+		return mv;
+	}
+	
+	
 	/** RequestParam: url?key=value --> works with url query
 	
 	@RequestMapping(value="/test")
