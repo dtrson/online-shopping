@@ -120,6 +120,15 @@ public class PageController {
 		return mv;
 	}
 	
+	/* Spring Login*/
+	@RequestMapping(value= "/login")
+	public ModelAndView slogin(){
+		
+		ModelAndView mv = new ModelAndView("login");
+		mv.addObject("title","Login");
+		return mv;
+	}
+	
 	
 	/** RequestParam: url?key=value --> works with url query
 	

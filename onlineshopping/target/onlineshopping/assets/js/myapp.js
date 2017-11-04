@@ -263,4 +263,42 @@ $(function(){
 			}
 		});
 	}
+	
+	//JQuery Validation for Login Form
+	var $loginForm = $('#loginForm');
+	
+	if($loginForm.length){
+		$loginForm.validate({
+			//create rules for validation
+			rules: {
+				//the name and the description here is taken from the 'path' value in the form
+				username: {
+					required: true,
+					email: true
+				},
+				password: {
+					required: true
+				}
+			},
+			messages: {
+				username: {
+					required: 'Please enter the username!',
+					email: 'Please enter valid email address'
+				},
+				password: {
+					required: 'Please enter password!',
+				}
+			},
+			errorElement: 'em',
+			errorPlacement: function(error, element){
+				
+				// add the class help-block
+				error.addClass('help-block');
+				
+				//add the error element after the input element
+				error.insertAfter(element);
+			}
+		});
+	}
+	
 });

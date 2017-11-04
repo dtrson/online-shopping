@@ -1,7 +1,6 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:beans="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
@@ -10,35 +9,32 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<context:component-scan base-package="com.sonduong.shoppingbackend"></context:component-scan>
-
+	
+	<http pattern="/resources/**" security ="none"></http>
+	
 	<http>
 		<!--<intercept-url pattern="/**" access="hasRole('USER')" /> -->
-		<intercept-url pattern="/**" access="hasAuthority('USER')" /> 
-		<form-login />
+		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/**" access="hasAuthority('USER')" />
+		<form-login login-page="/login" />
 		<logout />
 	</http>
 
 	<!-- using in-built user service: hard coded the user information -->
-	<!-- 
-	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-					  <user name="sduong" password="son" authorities="ROLE_USER, ROLE_ADMIN" /> -->
-				<!--  <user name="sduong" password="son" authorities="USER, ADMIN" /> -->   <!-- using with hasAuthority -->
-	<!--   </user-service>
-		</authentication-provider>
-	</authentication-manager>  
-	-->
+	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
+		name="sduong" password="son" authorities="ROLE_USER, ROLE_ADMIN" /> -->
+	<!-- <user name="sduong" password="son" authorities="USER, ADMIN" /> -->   <!-- using with hasAuthority -->
+	<!-- </user-service> </authentication-provider> </authentication-manager> -->
 
-	
-		<!-- using jdbc user service: get user from database -->
+
+	<!-- using jdbc user service: get user from database -->
 	<authentication-manager>
 		<authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource" 
-			users-by-username-query="select email, password, enabled from user_detail where email = ?"
-			authorities-by-username-query="select email, role from user_detail where email = ?" />
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select email, password, enabled from user_detail where email = ?"
+				authorities-by-username-query="select email, role from user_detail where email = ?" />
 		</authentication-provider>
 	</authentication-manager>
-	
+
 
 </beans:beans>
