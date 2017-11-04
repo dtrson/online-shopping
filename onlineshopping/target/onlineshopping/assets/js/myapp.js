@@ -100,6 +100,17 @@ $(function(){
 		},3000);
 	}
 	
+	
+	//to tackle the csrf token
+	var token = $('meta[name="_csrf"]').attr('content');
+	var header = $('meta[name="_csrf_header"]').attr('content');
+	
+	if(token.length > 0 && header.length > 0){
+		//set the token for ajax request
+		$(document).ajaxSend(function(e, xhr, options){
+			xhr.setRequestHeader(header,token);
+		})
+	}
 
 	
 	
@@ -286,7 +297,7 @@ $(function(){
 					email: 'Please enter valid email address'
 				},
 				password: {
-					required: 'Please enter password!',
+					required: 'Please enter the password!',
 				}
 			},
 			errorElement: 'em',
