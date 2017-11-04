@@ -59,6 +59,19 @@
 		<!-- Page Content -->
 		<div class="content">
 			<div class="container">
+			
+				<!-- will be displayed if credential is failed -->
+				<c:if test="${not empty message }">
+					<div class="row">
+						<div class="col-md-offset-3 col-md-6">
+							<div class="alert alert-danger">
+								${message}
+							</div>
+						</div>
+					</div>
+				</c:if>
+				
+				<!-- main login form -->	
 				<div class="row">
 					<div class="col-md-offset-3 col-md-6">
 						<div class="panel panel-primary">
@@ -85,6 +98,7 @@
 									<div class="form-group">
 										<div class="col-md-offset-4 col-md-8">
 											<input type="submit" value="Login" class="btn btn-primary" />
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 										</div>
 									</div>
 								</form>
