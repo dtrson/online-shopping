@@ -1,5 +1,7 @@
 package com.sonduong.shoppingbackend.dao;
 
+import java.util.List;
+
 import com.sonduong.shoppingbackend.dto.Address;
 import com.sonduong.shoppingbackend.dto.Cart;
 import com.sonduong.shoppingbackend.dto.User;
@@ -16,6 +18,9 @@ public interface UserDAO {
 	User getByEmail(String email);
 	
 	public boolean addAddress(Address address);
+	
+	Address getBillingAddress(User user);
+	List<Address> listShippingAddresses(User user);
 	
 	public boolean updateCart(Cart cart);
 }

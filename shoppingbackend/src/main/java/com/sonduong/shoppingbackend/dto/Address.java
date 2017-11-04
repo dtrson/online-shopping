@@ -5,39 +5,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * @author Son Duong
  * 
- * 02.11.2017
+ *         02.11.2017
  */
 @Entity
 public class Address {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="user_id")
-	private int userId;
-	
-	@Column(name="address_line_one")
+
+	@ManyToOne
+	private User user;
+
+	@Column(name = "address_line_one")
 	private String addressLineOne;
-	
-	@Column(name="address_line_two")
+
+	@Column(name = "address_line_two")
 	private String addressLineTwo;
-	
+
 	private String city;
-	
+
 	private String state;
-	
+
 	private String country;
-	
-	@Column(name="postal_code")
+
+	@Column(name = "postal_code")
 	private String postalCode;
-	
+
 	private boolean billing;
-	
+
 	private boolean shipping;
 
 	public int getId() {
@@ -48,12 +49,12 @@ public class Address {
 		this.id = id;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getAddressLineOne() {
@@ -122,10 +123,9 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", userId=" + userId + ", addressLineOne=" + addressLineOne + ", addressLineTwo="
+		return "Address [id=" + id + ", user=" + user + ", addressLineOne=" + addressLineOne + ", addressLineTwo="
 				+ addressLineTwo + ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode="
 				+ postalCode + ", billing=" + billing + ", shipping=" + shipping + "]";
 	}
-	
-	
+
 }
