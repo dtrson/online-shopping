@@ -2,6 +2,8 @@ com\sonduong\onlineshopping\controller\JsonDataController.class
 com\sonduong\onlineshopping\exception\ProductNotFoundException.class
 com\sonduong\onlineshopping\util\FileUploadUtility.class
 com\sonduong\onlineshopping\model\RegisterModel.class
+com\sonduong\onlineshopping\model\UserModel.class
+com\sonduong\onlineshopping\controller\GlobalController.class
 com\sonduong\onlineshopping\controller\ManagementController.class
 com\sonduong\onlineshopping\exception\GlobalDefaultExceptionHandler.class
 com\sonduong\onlineshopping\handler\RegisterHandler.class

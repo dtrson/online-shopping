@@ -162,8 +162,8 @@ public class ManagementController {
 	}
 	
 	//returning category for the request mapping 
-		@ModelAttribute("category")
-		public Category getCategory(){
-			return new Category();
-		}
+	@ModelAttribute("category")
+	public Category getCategory(){
+		return new Category();
+	}
 }
