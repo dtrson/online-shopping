@@ -70,9 +70,14 @@ public class PageController {
 	
 	/**Load all products based on category**/
 	@RequestMapping(value= "/show/all/products")
-	public ModelAndView showAllProducts(){
+	public ModelAndView showAllProducts(@RequestParam(value="result", required=false)String result){
 		
 		ModelAndView mv = new ModelAndView("page");
+		
+		if(result!=null){
+			mv.addObject("message", "This choosen product is not available anymore!");
+		}
+		
 		mv.addObject("title","All Products");
 		mv.addObject("categories",categoryDAO.listActiveCategories());
 		mv.addObject("userClickAllProducts", true);

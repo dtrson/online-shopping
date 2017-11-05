@@ -27,7 +27,7 @@
 				</security:authorize>
 				
 				<security:authorize access="isAuthenticated()">
-					<li class="dropdown">
+					<li class="dropdown" id="userCart">
 						<a href="javascript:void(0)" class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
 							 ${userModel.fullName}
 						</a>
@@ -36,7 +36,7 @@
 						<ul class="dropdown-menu">
 							<security:authorize access="hasAuthority('USER')">
 								<li>
-									<a href="${contextRoot}/cart">
+									<a href="${contextRoot}/cart/show">
 										<span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
 										<span class="badge"> ${userModel.cart.cartLines}</span>
 										- &#36; ${userModel.cart.grandTotal}

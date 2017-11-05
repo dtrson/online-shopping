@@ -9,6 +9,15 @@
 
 		<!-- display products -->
 		<div class="col-md-9">
+			
+			<c:if test="${not empty message}">
+				<div class="alert alert-info">
+					<h3 class="text-center">
+						${message}
+					</h3>
+				</div>	
+			</c:if>
+			
 			<div class="row">
 				<!-- Added breadcrumb component -->
 				<div class="col-lg-12">
@@ -68,6 +77,5 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>

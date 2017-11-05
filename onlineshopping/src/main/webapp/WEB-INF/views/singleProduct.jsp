@@ -45,17 +45,17 @@
 			<security:authorize access="hasAuthority('USER')">
 			<c:choose>
 				<c:when test="${product.quantity < 1 }">
-					<a href="javascript:void(0)" class="btn btn-success disabled"><i class="fa fa-cart-plus" aria-hidden="true"></i>Add to Cart</a>
+					<a href="javascript:void(0)" class="btn btn-success disabled"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Cart</a>
 				</c:when>
 				
 				<c:otherwise>
-					<a href="${contextRoot}/cart/add/${product.id}/product" class="btn btn-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>Add to Cart</a>
+					<a href="${contextRoot}/cart/add/${product.id}/product" class="btn btn-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to Cart</a>
 				</c:otherwise>
 			</c:choose>
 			</security:authorize>
 			
 			<security:authorize access="hasAuthority('ADMIN')">
-				<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+				<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 			</security:authorize>
 			
 			<a href="${contextRoot}/show/all/product" class="btn btn-success">Go Back</a>

@@ -43,6 +43,7 @@ public class CartLineTestCase {
 	}
 	
 
+	@Ignore
 	@Test
 	public void testAddNewCartLine(){
 		
