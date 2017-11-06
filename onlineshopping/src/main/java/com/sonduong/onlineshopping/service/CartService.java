@@ -57,8 +57,20 @@ public class CartService {
 			double oldCartLineTotal = cartLine.getTotal();
 			int oldCount = cartLine.getProductCount();
 			
-			if(product.getQuantity()<=count){
-				count = product.getQuantity();
+			int countDiff = count - oldCount;
+			
+			if(product.getQuantity()<=0 && countDiff > 0){
+				return "result=updated";
+			}
+			
+			
+			System.out.println("countDiff: " + countDiff);
+			System.out.println("oldCount cartLine: " + oldCount);
+			System.out.println("count: "+ count);
+			
+			if((countDiff > 0) && (product.getQuantity()<=countDiff)){
+				count = oldCount + product.getQuantity();
+				countDiff = count - oldCount;
 			}
 			cartLine.setProductCount(count);
 			cartLine.setBuyingPrice(product.getUnitPrice());
@@ -68,11 +80,7 @@ public class CartService {
 			cartLineDAO.update(cartLine);
 			
 			//update new product count
-			if(count > oldCount){
-				product.setQuantity(product.getQuantity() - (count-oldCount));
-			}else{
-				product.setQuantity(product.getQuantity() + (oldCount-count));
-			}
+			product.setQuantity(product.getQuantity() - countDiff);
 			productDAO.update(product);
 			
 			//update the cart also

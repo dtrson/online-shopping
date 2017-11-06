@@ -99,7 +99,6 @@ public class CartLineDAOImpl implements CartLineDAO {
 					.setParameter("productId", productId).getSingleResult();
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 

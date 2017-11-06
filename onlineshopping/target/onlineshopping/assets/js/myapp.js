@@ -332,6 +332,8 @@ $(function(){
 		var originalCount = countElement.attr('value');
 		var currentCount = countElement.val();
 		
+		console.log("OriginalCount: " + originalCount);
+		console.log("CurrentCount: " + currentCount);
 		//work only when the count has changed
 		if(currentCount != originalCount){
 			
